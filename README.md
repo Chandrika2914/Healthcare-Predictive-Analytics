@@ -102,8 +102,6 @@ Performance metrics for each regression model are summarized below.
 
 > **Figure:** Model accuracies for key predicted health indicators.
 
-![Feature Importance](images/Feature_importance.png)
-
 ---
 
 ## 🔻 Dimensionality Reduction
@@ -112,7 +110,7 @@ To visualize the dataset in reduced form and identify feature relationships, **P
 
 <table align="center">
 <tr>
-  <td align="center"><b>PCA vs t-SNE</b></td>
+  <td align="center"><b>PCA</b></td>
   <td align="center"><b>tSNE</b></td>
 </tr>
 <tr>
@@ -141,7 +139,15 @@ Clustering helps group patients with similar characteristics.
 > **Figure:** K-Means with t-SNE visualization provided moderate separation (silhouette ≈ 0.53).
 
 ### DBSCAN Clustering
-![DBSCAN](images/DBSCAN.png)
+
+<table align="center">
+<tr>
+  <td align="center"><b>DBSCAN</b></td>
+</tr>
+<tr>
+  <td><img src="images/DBSCAN.png" width="90%"></td>
+</tr>
+</table>
 
 > **Figure:** DBSCAN clusters after PCA reduction — less dense clusters (silhouette ≈ 0.19).
 
