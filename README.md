@@ -1,142 +1,198 @@
-# 🩺 Healthcare Predictive Analytics: Comparative Study of Supervised, Unsupervised & Dimensionality Reduction Techniques
+# Healthcare Predictive Analytics: Comparative Study of Machine Learning Algorithms
 
-### 📊 Project Overview
-This project presents a **comprehensive machine learning analysis on healthcare data** to understand patient health indicators and predict outcomes such as **Hemoglobin**, **Glucose (GLU)**, and **Triglycerides**.  
-It involves both **supervised** and **unsupervised** learning techniques — evaluating multiple regression algorithms, clustering approaches, and dimensionality reduction methods to identify the most effective modeling strategies.
+![ML Pipeline](images/ML_Pipeline.png)
 
-⚠️ *Note:* The dataset used is confidential and cannot be shared publicly. This repository focuses on the analytical process, methodology, and comparative results.
----
-
-## 🎯 Objectives
-- Predict critical health indicators using supervised regression models.  
-- Compare model performance across various algorithms using multiple evaluation metrics.  
-- Explore unsupervised learning for clustering patients with similar conditions.  
-- Apply dimensionality reduction techniques for better visualization and interpretation.  
+> **Figure:** End-to-end workflow showing data cleaning, feature engineering, model training, hyperparameter tuning, and insights validation.
 
 ---
 
-## 🧩 Dataset Summary
+## Project Overview
+This project focuses on applying and comparing multiple **machine learning algorithms** on a healthcare dataset to predict patient health indicators such as **Hemoglobin**, **Glucose (GLU)**, and **Triglycerides**.  
+The study includes **supervised**, **unsupervised**, and **dimensionality reduction** techniques to analyze model accuracy and pattern discovery in health data.
+
+> ⚠️ *Note:* Due to confidentiality, healthcare data and code are not included.  
+> This repository documents the **methodology, workflow, analysis, and insights** to showcase machine learning and analytical expertise.
+
+---
+
+## Objectives
+- Predict healthcare-related outcomes using regression models.  
+- Compare performance across multiple algorithms.  
+- Apply unsupervised clustering to discover patient groupings.  
+- Visualize data patterns using dimensionality reduction methods.
+
+---
+
+## Dataset Summary
 - **Domain:** Healthcare  
 - **Instances:** 1930  
-- **Features:** 44  
-- **Target Variables:** Hemoglobin, GLU (Glucose), Triglycerides  
+- **Features:** 44 (including Gender, Age, BP, Glucose, etc.)  
+- **Target Variables:** Hemoglobin, GLU, Triglycerides  
 
-### 🧼 Data Preprocessing
-- Replaced missing values (NaN) with zeros or mean values.  
-- Dropped irrelevant features (e.g., Date of Birth).  
-- Applied **MinMaxScaler** for feature normalization.  
-- Split dataset into **80% training** and **20% testing** sets.
-
----
-
-## ⚙️ Workflow
-1. Data collection and preprocessing  
-2. Model development (Supervised learning)  
-3. Hyperparameter optimization using **Grid Search**  
-4. Evaluation using error metrics and accuracy  
-5. Clustering analysis (Unsupervised learning)  
-6. Dimensionality reduction and visualization  
-7. Interpretation and conclusion  
+### Data Preprocessing
+- Missing values handled (NaN → 0 or mean replacement).  
+- Unnecessary columns (e.g., Date of Birth) dropped.  
+- Features scaled using **MinMaxScaler**.  
+- Dataset split: **80% training / 20% testing**.
 
 ---
 
-## 🤖 Supervised Learning
-### Algorithms Implemented
+## Machine Learning Workflow
+1. Data Cleaning & Feature Engineering  
+2. Model Training (Supervised Algorithms)  
+3. Hyperparameter Tuning (Grid Search)  
+4. Evaluation (MAE, MSE, RMSE, MAPE, Accuracy)  
+5. Dimensionality Reduction (PCA, t-SNE)  
+6. Clustering (K-Means, DBSCAN)  
+7. Insight Generation  
+
+---
+
+## Supervised Learning Models
+
 | Category | Algorithms |
 |-----------|-------------|
 | Baseline | Dummy Regressor |
 | Tree-Based | Decision Tree, Random Forest |
 | Ensemble | AdaBoost |
-| Kernel-Based | Support Vector Machine (SVR) |
+| Kernel-Based | Support Vector Regressor (SVR) |
 | Distance-Based | K-Nearest Neighbors (KNN) |
 | Neural Network | Multilayer Perceptron (MLP) |
 
 ---
 
-### 📈 Evaluation Metrics
-- Mean Absolute Error (MAE)  
-- Mean Squared Error (MSE)  
-- Root Mean Squared Error (RMSE)  
-- Mean Absolute Percentage Error (MAPE)  
-- Accuracy (100 - MAPE)
+## Learning Curve Analysis
+
+Grid Search optimization was applied to improve model generalization.  
+Below are the **Random Forest learning curves** before and after tuning.
+
+<table align="center">
+<tr>
+  <td align="center"><b>Random Forest Learning Curve</b></td>
+  <td align="center"><b>Random Forest GRID Learning Curve</b></td>
+</tr>
+<tr>
+  <td><img src="images/RF_LearningCurve.png" width="90%"></td>
+  <td><img src="images/RF_GridLearningCurve.png" width="90%"></td>
+</tr>
+</table>
+
+<p align="center"><i>Learning curves showing improved balance between training and validation accuracy after hyperparameter tuning.</i></p>
 
 ---
 
-### 🧪 Key Results (Regression)
-| Algorithm | MAE | MSE | RMSE | Accuracy (%) |
-|------------|-----|-----|------|---------------|
-| Decision Tree | 0.045 | 0.004 | 0.066 | 73.65 |
-| Random Forest | 0.033 | 0.002 | 0.049 | **75.54** |
-| Support Vector Regressor | 0.041 | 0.003 | 0.061 | 65.63 |
-| KNN | 0.047 | 0.006 | 0.081 | 67.35 |
-| AdaBoost | 0.037 | 0.002 | 0.052 | **75.81** |
-| Neural Network | 0.056 | 0.006 | 0.082 | 56.54 |
+## Model Comparison
 
-✅ **Best Performing Models:**  
-- **Random Forest (75.54%)**  
-- **AdaBoost (75.81%)**  
+Performance metrics for each regression model are summarized below.
 
-### 📊 Predicted Health Features
-| Feature | Random Forest | AdaBoost Grid Search |
-|----------|----------------|----------------------|
-| GLU | 75.54 | 75.81 |
-| Hemoglobin | 86.21 | 84.41 |
-| Triglycerides | 48.70 | 43.35 |
+![Model Comparison](images/model_Comparison.png)
+
+> **Figure:** Comparative analysis of regression models using MAE, MSE, RMSE, and Accuracy.  
+> *Random Forest and AdaBoost achieved the best results.*
 
 ---
 
-## 🔍 Unsupervised Learning
-### Algorithms Used
-- **K-Means Clustering**  
-- **DBSCAN (Density-Based Spatial Clustering)**  
+## 🧾 Feature-Wise Prediction Results
 
-These algorithms were applied to identify natural clusters among patients based on health parameters.
+| Feature | Random Forest | AdaBoost (Grid Search) |
+|----------|----------------|------------------------|
+| GLU | 75.545 | 75.818 |
+| Hemoglobin | 86.215 | 84.413 |
+| TRIGL_sangue | 48.708 | 43.346 |
 
-### 📈 Cluster Evaluation
-- Used **Silhouette Score** and **Elbow Method** to determine optimal number of clusters (K = 6).  
-- **K-Means with PCA-reduced features** achieved best silhouette score of **0.718**, indicating well-separated clusters.  
-- **K-tSNE** achieved a maximum silhouette score of **0.535**, showing moderate cluster quality.  
-- **DBSCAN** after PCA reduction yielded a silhouette score of **0.195**, suggesting sparse clusters.  
+> **Figure:** Model accuracies for key predicted health indicators.
+
+![Feature Importance](images/Feature_importance.png)
 
 ---
 
 ## 🔻 Dimensionality Reduction
-### Techniques Applied
-| Method | Description | Purpose |
-|--------|--------------|----------|
-| **t-SNE** | Non-linear technique for visualizing high-dimensional data | Data exploration & visualization |
-| **PCA (Principal Component Analysis)** | Linear transformation technique | Reducing dimensionality before clustering |
 
-✅ PCA proved most effective for clustering, providing clearer cluster separation and improved silhouette score.
+To visualize the dataset in reduced form and identify feature relationships, **PCA** and **t-SNE** were applied.
+
+<table align="center">
+<tr>
+  <td align="center"><b>PCA vs t-SNE</b></td>
+  <td align="center"><b>tSNE</b></td>
+</tr>
+<tr>
+  <td><img src="images/Dim_PCA.png" width="90%"></td>
+  <td><img src="images/Dim_Tsne.png" width="90%"></td>
+</tr>
+</table>
+
+<p align="center"><i>PCA (left) shows linear separability, while t-SNE (right) reveals non-linear data structure.
+</i></p>
+ 
+---
+
+## Unsupervised Learning and Clustering
+
+Clustering helps group patients with similar characteristics.
+
+### K-Means with PCA
+![K-PCA](images/K-PCA.png)
+
+> **Figure:** K-Means clustering after PCA achieved best silhouette score (0.718), showing well-separated clusters.
+
+### K-Means with t-SNE
+![K-tSNE](images/K-Tsne.png)
+
+> **Figure:** K-Means with t-SNE visualization provided moderate separation (silhouette ≈ 0.53).
+
+### DBSCAN Clustering
+![DBSCAN](images/DBSCAN.png)
+
+> **Figure:** DBSCAN clusters after PCA reduction — less dense clusters (silhouette ≈ 0.19).
 
 ---
 
-## 📊 Visual Results
-- **Decision Tree & Random Forest Learning Curves** show reduced variance after Grid Search.  
-- **t-SNE & PCA plots** clearly depict separability of patient groups.  
-- **Silhouette & Elbow Curves** confirm optimal K for clustering (K=6).  
+## Key Results Summary
+
+| Algorithm | MAE | MSE | RMSE | Accuracy (%) |
+|------------|-----|-----|------|---------------|
+| Decision Tree | 0.045 | 0.004 | 0.066 | 73.65 |
+| Random Forest | 0.033 | 0.002 | 0.049 | **75.54** |
+| SVR | 0.041 | 0.003 | 0.061 | 65.63 |
+| KNN | 0.047 | 0.006 | 0.081 | 67.35 |
+| AdaBoost | 0.037 | 0.002 | 0.052 | **75.81** |
+| Neural Network | 0.056 | 0.006 | 0.082 | 56.54 |
+
+**Top Performers:** Random Forest and AdaBoost (Grid Search)  
+**Best Overall:** Random Forest with 86.21% Hemoglobin prediction accuracy
 
 ---
 
-## 💡 Insights & Conclusion
-- **Random Forest** and **AdaBoost** emerged as best supervised models, achieving the highest accuracy and lowest error.  
-- **K-Means with PCA** produced the most coherent clusters for patient grouping.  
-- **t-SNE visualizations** provided intuitive insights into high-dimensional data patterns.  
-- Overall accuracy of **Random Forest** reached **86.21%** for Hemoglobin prediction — the highest among models tested.
+## Insights & Learnings
+- Ensemble models performed best due to reduced overfitting and better bias-variance control.  
+- Grid Search tuning improved accuracy by ~1%.  
+- PCA outperformed t-SNE for clustering separation.  
+- DBSCAN performed weakest due to sparse data distribution.  
+- Demonstrated full machine learning cycle — preprocessing, modeling, tuning, and evaluation.
 
 ---
 
-## 🧰 Tools & Technologies
-- **Programming:** Python  
-- **Libraries:** Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn  
-- **Techniques:** Supervised Learning, Unsupervised Learning, Dimensionality Reduction, Model Evaluation, Grid Search  
+## Tools & Technologies
+- **Language:** Python  
+- **Libraries:** Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn  
+- **Concepts:** Regression, Clustering, PCA, t-SNE, Grid Search, Evaluation Metrics  
 
 ---
 
-## 🧾 Skills Demonstrated
-- Data cleaning and preprocessing  
-- Regression and clustering modeling  
-- Hyperparameter optimization (Grid Search)  
-- Dimensionality reduction and visualization  
-- Comparative performance analysis  
-- Interpretation of ML metrics and results  
+## Skills Demonstrated
+- Data Preprocessing and Feature Scaling  
+- Supervised and Unsupervised Learning  
+- Hyperparameter Optimization  
+- Model Evaluation and Comparison  
+- Visualization and Dimensionality Reduction  
+- Insight Generation and Communication  
+
+---
+
+## Conclusion
+From all the algorithms tested, **Random Forest and AdaBoost (Grid Search)** achieved the highest predictive accuracy and lowest error values.  
+For clustering, **K-Means with PCA** showed the best structure (silhouette ≈ 0.718).  
+These results demonstrate the importance of **model tuning** and **dimensionality reduction** in healthcare analytics.
+
+---
+
